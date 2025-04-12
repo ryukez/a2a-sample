@@ -57,10 +57,25 @@ export async function* recipeAgent({
         break;
       case "recipe_detail":
         yield {
+          name: "recipe",
+          parts: [
+            {
+              type: "text",
+              text: response.object.recipe ?? "",
+            },
+          ],
+        };
+
+        yield {
           state: "completed",
           message: {
             role: "agent",
-            parts: [{ type: "text", text: response.object.recipe ?? "" }],
+            parts: [
+              {
+                type: "text",
+                text: "こちらのレシピはいかがでしょうか？何かご要望があればお知らせください！",
+              },
+            ],
           },
         };
         break;
