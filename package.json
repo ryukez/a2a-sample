@@ -1,0 +1,31 @@
+{
+  "name": "a2a-sample",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ryunosuke",
+  "description": "a2a sample implementation",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^20.11.24",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^1.3.10",
+    "@mastra/core": "^0.8.2",
+    "a2a-sdk-ryukez": "^0.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mastra": "^0.4.8",
+    "zod": "^3.24.2"
+  }
+}
