@@ -7,25 +7,33 @@
 ```
 a2a-sample/
 ├── src/
-│   ├── index.ts              # メインエントリーポイント
-│   ├── mastra/
-│   │   ├── agents/
-│   │   │   └── recipe_agent.ts  # レシピ提案エージェントの実装
-│   │   └── tools/
-│   │       └── tavily_search.ts # Web検索ツールの実装
-│   └── recipe_agent.ts       # a2aに準拠したagentのエントリポイントおよびカードの実装
-|   └── cli.ts                # クライアント側のサンプル実装
-├── package.json              # プロジェクト設定と依存関係
-├── tsconfig.json             # TypeScript設定
-└── .gitignore                # Git除外設定
+│   ├── client/                # クライアント側の実装
+│   │   ├── index.ts           # クライアントのメインエントリーポイント
+│   │   └── config/            # クライアント設定
+│   ├── server/                # サーバー側の実装
+│   │   ├── index.ts           # サーバーのメインエントリーポイント
+│   │   ├── recipe_agent.ts    # レシピ提案エージェントの実装
+│   │   ├── config/            # サーバー設定
+│   │   └── mastra/            # Mastra関連の実装
+│   └── cli.ts                 # ターミナル用CLIの実装
+├── assets/                    # 静的アセット
+├── package.json               # プロジェクト設定と依存関係
+├── tsconfig.json              # TypeScript設定
+└── .env                       # 環境変数設定
 ```
 
 ## 機能
+
+### サーバー側
 
 - レシピ提案エージェント
   - ユーザーの要望に応じたレシピの提案
   - Web検索によるレシピ情報の取得
   - レシピの詳細情報の提供
+
+### クライアント側
+
+- Slackクライアント
 
 ## 実行方法
 
@@ -52,26 +60,23 @@ npm install
 3. 環境変数の設定
    `.env`ファイルを作成し、必要な環境変数を設定します。
 
-### サーバーの起動
+### 開発環境での実行
 
-1. 開発環境での実行
-
-```bash
-npm run dev
-```
-
-2. ビルドと実行
+1. サーバーの起動（別ターミナルで実行）
 
 ```bash
-npm run build
-npm start
+npm run dev:server
 ```
 
-デフォルトで`http://localhost:41241`でサーバーが起動します。
+2. Slack クライアントの起動
+
+```bash
+npm run dev:client
+```
 
 ### CLIの実行
 
-サーバーが起動した状態で、別のターミナルを開いて以下のコマンドを実行します：
+CLIで接続することもできます。
 
 ```bash
 npx ts-node src/cli.ts

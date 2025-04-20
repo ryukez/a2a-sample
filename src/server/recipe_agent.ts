@@ -2,7 +2,7 @@ import { mastra } from "./mastra";
 import { schema, TaskContext, TaskYieldUpdate } from "a2a-sdk-ryukez";
 import { CoreMessage } from "@mastra/core";
 import { z } from "zod";
-
+import fs from "fs";
 export async function* recipeAgent({
   task,
   history,
@@ -62,6 +62,22 @@ export async function* recipeAgent({
             {
               type: "text",
               text: response.object.recipe ?? "",
+            },
+          ],
+        };
+
+        const imageBinary = fs.readFileSync("assets/curry.png");
+
+        yield {
+          name: "curry_image",
+          parts: [
+            {
+              type: "file",
+              file: {
+                name: "curry.png",
+                mimeType: "image/png",
+                bytes: Buffer.from(imageBinary).toString("base64"),
+              },
             },
           ],
         };

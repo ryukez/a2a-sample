@@ -216,6 +216,7 @@ async function main() {
       const stream = client.sendTaskSubscribe(params);
       // Iterate over the unwrapped event payloads
       for await (const event of stream) {
+        if (!event) continue;
         printAgentEvent(event); // Use the updated handler function
       }
       // Add a small visual cue that the stream for *this* message ended
