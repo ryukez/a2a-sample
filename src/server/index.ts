@@ -1,11 +1,11 @@
-import { recipeAgent, recipeAgentCard } from "./recipe_agent";
-import { A2AServer } from "a2a-sdk-ryukez";
+import { mathAgent, mathAgentCard } from "./math_agent";
+import { A2AServer } from "@ryukez/a2a-sdk";
 
-const server = new A2AServer(recipeAgent, {
-  card: recipeAgentCard,
+const server = new A2AServer(mathAgent, {
+  card: mathAgentCard,
 });
 
 server.start(); // Default port 41241
 
-console.log("[RecipeAgent] Server started on http://localhost:41241");
-console.log("[RecipeAgent] Press Ctrl+C to stop the server");
+console.log("[MathAgent] Server started on http://localhost:41241");
+console.log("[MathAgent] Press Ctrl+C to stop the server");

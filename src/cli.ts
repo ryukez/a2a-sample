@@ -2,7 +2,7 @@
 
 import readline from "node:readline";
 import crypto from "node:crypto";
-import { A2AClient, schema } from "a2a-sdk-ryukez";
+import { A2AClient, schema } from "@ryukez/a2a-sdk";
 
 // --- ANSI Colors ---
 const colors = {

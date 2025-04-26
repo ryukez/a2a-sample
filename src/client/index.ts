@@ -1,7 +1,8 @@
 import { App } from "@slack/bolt";
 import dotenv from "dotenv";
 import { env } from "./config/env";
-import { defaultSlackMessageChannel } from "a2a-sdk-ryukez/client/slack";
+import { defaultSlackMessageChannel } from "@ryukez/a2a-sdk/client/slack";
+import { A2AClient } from "@ryukez/a2a-sdk";
 
 // 環境変数の読み込み
 dotenv.config();
@@ -13,7 +14,10 @@ const app = new App({
   socketMode: true,
 });
 
-const agentMessageChannel = defaultSlackMessageChannel(env.AGENT_URL, app);
+const agentMessageChannel = defaultSlackMessageChannel(
+  new A2AClient(env.AGENT_URL),
+  app
+);
 
 // メンションに対する応答
 app.event("app_mention", async ({ event }) => {
@@ -22,7 +26,7 @@ app.event("app_mention", async ({ event }) => {
   agentMessageChannel.userMessage({
     taskId: threadTs,
     sessionId: threadTs,
-    text: event.text,
+    parts: [{ type: "text", text: event.text }],
     context: { channel: event.channel, threadTs },
   });
 });

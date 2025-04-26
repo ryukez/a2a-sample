@@ -1,5 +1,5 @@
 import { mastra } from "./mastra";
-import { schema, TaskContext, TaskYieldUpdate } from "a2a-sdk-ryukez";
+import { schema, TaskContext, TaskYieldUpdate } from "@ryukez/a2a-sdk";
 import { CoreMessage } from "@mastra/core";
 import { z } from "zod";
 import fs from "fs";
